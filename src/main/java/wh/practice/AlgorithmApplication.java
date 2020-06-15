@@ -1,16 +1,31 @@
 package wh.practice;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author wanghuan
  */
-@SpringBootApplication
 public class AlgorithmApplication {
-
     public static void main(String[] args) {
-        SpringApplication.run(AlgorithmApplication.class, args);
+//        ThA thA = new ThA();
+//        Thread thread1 = new Thread(thA);
+//        Thread thread2 = new Thread(thA);
+//        thread1.start();
+//        thread2.start();
     }
+}
 
+
+class ThA implements Runnable {
+
+    AtomicInteger a = new AtomicInteger(0);
+    AtomicInteger b = new AtomicInteger(0);
+
+    @Override
+    public void run() {
+        for (int i = 0; i<10000; i++) {
+            a.incrementAndGet();
+        }
+        System.out.println(a);
+    }
 }
