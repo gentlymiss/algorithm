@@ -27,10 +27,10 @@ public class ReverseBetween {
 //        for (int i=m; i<n; i++) {
 //        }
 //    }
-}
 
-class ListNode {
-    int val;
-    com.example.demo.ListNode next;
-    ListNode(int x) { val = x; }
+    static class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int x) { val = x; }
+    }
 }

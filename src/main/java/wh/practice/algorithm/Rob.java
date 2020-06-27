@@ -32,8 +32,8 @@ public class Rob {
 
     public static int rob(int[] nums) {
         int a = 0, b = 0;
-        for (int i = 0; i < nums.length; i++) {
-            int n = Math.max(a+nums[i], b);
+        for (int num : nums) {
+            int n = Math.max(a + num, b);
             a = b;
             b = n;
         }

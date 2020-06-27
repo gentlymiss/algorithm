@@ -1,14 +1,14 @@
 package wh.practice.algorithm;
 
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
- * @author wanghuan
+ * 二叉树遍历
+ *
+ * @author wh
  */
 public class TravelBinaryTree {
+    static List<Integer> list = new ArrayList<>();
 
     public static void main(String[] args) {
         Node node = new Node(1);
@@ -18,25 +18,48 @@ public class TravelBinaryTree {
         node.left.right = new Node(5);
         node.right.left = new Node(6);
         node.right.right = new Node(7);
-
-        System.out.println(dfs(node));
+        bfs(node);
+        System.out.println(list);
     }
 
-    static List<Integer> dfs(Node node) {
-        ArrayList<Integer> list = new ArrayList<>();
-        Deque<Node> stack = new LinkedList<>();
-        stack.addFirst(node);
-        while (!stack.isEmpty()) {
-            Node node1 = stack.removeFirst();
+    static void bfs(Node node) {
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(node);
+        while (!queue.isEmpty()) {
+            Node node1 = queue.remove();
             list.add(node1.value);
-            if (node1.right != null) {
-                stack.addFirst(node1.right);
-            }
             if (node1.left != null) {
-                stack.addFirst(node1.left);
+                queue.add(node1.left);
+            }
+            if (node1.right != null) {
+                queue.add(node1.right);
             }
         }
-        return list;
+    }
+
+    static void dfs(Node node) {
+        list.add(node.value);
+        if (node.left != null) {
+            dfs(node.left);
+        }
+        if (node.right != null) {
+            dfs(node.right);
+        }
+    }
+
+    static void dfsByStack(Node root) {
+        Deque<Node> stack = new LinkedList<>();
+        stack.addFirst(root);
+        while (!stack.isEmpty()) {
+            Node node = stack.removeFirst();
+            list.add(node.value);
+            if (node.right != null) {
+                stack.addFirst(node.right);
+            }
+            if (node.left != null) {
+                stack.addFirst(node.left);
+            }
+        }
     }
 
     static class Node {
@@ -48,4 +71,3 @@ public class TravelBinaryTree {
         Node right;
     }
 }
-
