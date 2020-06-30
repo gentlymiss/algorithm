@@ -63,7 +63,7 @@ public class Boss {
             if (obj instanceof Node) {
                 return this.hashCode() == obj.hashCode();
             } else {
-                return false; 
+                return false;
             }
         }
     }
