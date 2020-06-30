@@ -53,8 +53,8 @@ public class CQueue {
         }
         return stack2.removeLast();
     }
-}
-class Main {
+
+
     public static void main(String[] args) {
         CQueue q = new CQueue();
         System.out.println(q.deleteHead());
