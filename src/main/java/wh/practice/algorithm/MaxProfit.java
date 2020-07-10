@@ -34,34 +34,14 @@ public class MaxProfit {
         System.out.println(maxProfit1(prices));
     }
 
-    /**
-     * 遍历, 双循环
-     * @param prices
-     * @return
-     */
-    public static int maxProfit(int[] prices) {
-        int sum = 0;
-        for (int i=0; i<prices.length-1; i++) {
-            for (int j=i+1; j<prices.length; j++) {
-                sum = Math.max(sum, prices[j] - prices[i]);
-            }
-        }
-        return sum;
-    }
-
-    /**
-     * 动态规划
-     * @param prices
-     * @return
-     */
     public static int maxProfit1(int[] prices) {
         if (prices.length == 0) {
             return 0;
         }
         int min = prices[0], profit = 0;
         for (int price : prices) {
-            min = min <= price ? min : price;
-            profit = profit >= price-min ? profit : price-min;
+            min = Math.min(min, price);
+            profit = Math.max(profit, price - min);
         }
         return profit;
     }
