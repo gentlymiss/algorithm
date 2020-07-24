@@ -1,7 +1,5 @@
 package wh.practice.algorithm;
 
-import java.util.Deque;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -32,59 +30,10 @@ import java.util.List;
  */
 public class MinimumTotal {
     public static void main(String[] args) {
-        Node node = new Node(1);
-        node.next = new Node(2);
-        node.next.next = new Node(3);
-        node.next.next.next = new Node(4);
-        node.next.next.next.next = new Node(5);
-        System.out.println(reverse(node, 1, 5));
+
     }
 
-    public static Node reverse(Node head, int left, int right) {
-        int i = 0;
-        Node node = new Node(0);
-        node.next=head;
-        Node node3 = node;
-        while( i < left-1) {
-            node3 = node3.next;
-            i++;
-        }//循环至node.next 开始反转
-
-        Node node1 = node3.next;
-        i++;
-        Deque<Node> stack = new LinkedList<>();
-        while(i >= left && i <= right) {
-            stack.offerLast(node1);
-            node1 = node1.next;
-            i++;
-        }
-        node1 = stack.pollLast();
-        assert node1 != null;
-        Node node2 = node1.next;
-        node3.next = node1;
-        while(!stack.isEmpty()) {
-            node1.next = stack.pollLast();
-            node1 = node1.next;
-        }
-        node1.next = node2;
-        return node.next;
-    }
-
-    static class Node {
-        int val;
-        Node next;
-        Node(int val) {
-            this.val = val;
-        }
-
-        @Override
-        public String toString() {
-            return val + "," + next;
-        }
-    }
-
-
-
+    //TODO 尚未通过
     public static int minimumTotal(List<List<Integer>> triangle) {
         int[] ints = new int[triangle.get(triangle.size() - 1).size()];
 
